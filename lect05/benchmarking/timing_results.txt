@@ -1,0 +1,25 @@
+Data size: 1000
+  Unsorted Vector Find Time Avg: 0.569 us, Min: 0.27 us, Max: 0.782 us
+  Sorted Vector Find Time Avg: 0.617 us, Min: 0.297 us, Max: 0.834 us
+  std::set Find Time Avg: 0.295 us, Min: 0.142 us, Max: 0.394 us
+-----------------------------
+Data size: 10000
+  Unsorted Vector Find Time Avg: 2.132 us, Min: 1.574 us, Max: 3.153 us
+  Sorted Vector Find Time Avg: 0.431 us, Min: 0.351 us, Max: 0.613 us
+  std::set Find Time Avg: 0.219 us, Min: 0.177 us, Max: 0.322 us
+-----------------------------
+Data size: 100000
+  Unsorted Vector Find Time Avg: 15.486 us, Min: 13.341 us, Max: 17.948 us
+  Sorted Vector Find Time Avg: 0.42 us, Min: 0.406 us, Max: 0.445 us
+  std::set Find Time Avg: 0.224 us, Min: 0.215 us, Max: 0.23 us
+-----------------------------
+Data size: 1000000
+  Unsorted Vector Find Time Avg: 134.168 us, Min: 107.148 us, Max: 158.312 us
+  Sorted Vector Find Time Avg: 0.534 us, Min: 0.487 us, Max: 1.787 us
+  std::set Find Time Avg: 0.326 us, Min: 0.269 us, Max: 1.586 us
+-----------------------------
+Data size: 10000000
+  Unsorted Vector Find Time Avg: 510.506 us, Min: 391.772 us, Max: 1018.14 us
+  Sorted Vector Find Time Avg: 1.298 us, Min: 1.222 us, Max: 1.622 us
+  std::set Find Time Avg: 1.494 us, Min: 1.408 us, Max: 2.579 us
+-----------------------------
