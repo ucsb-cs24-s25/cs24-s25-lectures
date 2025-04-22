@@ -23,8 +23,8 @@ public:
     // accessors or getter
     bool find(int value) const; // searches for a value
     void printInorder() const;
-    vector<int> linearize() const; //NEW!
     int getHeight() const; // returns the height of the tree
+    vector<int> linearize() const; // NEW!
 
     // mutators or setter
     void insert(int value);
@@ -46,11 +46,20 @@ private:
     int getHeight(Node *r) const;
     void printInorder(Node *r) const;
     void insert(int value, Node *r);
+    void linearize(Node *r, vector<int>& result) const;
 };
+void bst::linearize(Node *r, vector<int>& result) const{
+    if(!r) return;
+    //cout << r->data << " ";
+    result.push_back(r->data);
+    linearize(r->left, result);
+    linearize(r->right, result);
 
+}
 vector<int> bst::linearize() const{
     vector<int> result;
     // Call helper function
+    linearize(root, result);
     return result;
 }
 
@@ -110,7 +119,7 @@ int bst::getHeight() const{
 bst* create_small_bst(){
     bst* new_bst = new bst();
     new_bst->root = new bst::Node(42);
-    new_bst->root->left = new bst::Node(32,new_bst->root->left);
+    new_bst->root->left = new bst::Node(32,new_bst->root);
     bst::Node* tmp = new_bst->root->left;
     tmp->left = new bst::Node(12, tmp);
     new_bst->root->right = new bst::Node(45, new_bst->root);
@@ -119,6 +128,12 @@ bst* create_small_bst(){
 int main(){
     bst* mybst = create_small_bst();
     mybst->printInorder();
+    cout << endl;
+    auto result = mybst->linearize();
+    cout << endl;
+    for(auto e: result){
+        cout << e << " ";
+    }
     cout << endl;
     cout << "Height = "<< mybst->getHeight() << endl;
     return 0;
