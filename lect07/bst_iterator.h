@@ -39,5 +39,22 @@ private:
     Node* successor(Node* r) const;
     Node* getmin(Node* r) const;
 };
+class bst::iterator{
+    public:
+        iterator(bst::Node* p = nullptr, bst* ptree = nullptr): curr(p), tree(ptree){}
+        int operator*(){
+            return curr->data;
+        }
+        iterator& operator++(){
+            curr = tree->successor(curr);
+            return *this;
+        }
+        bool operator!=(&iterator rhs){
+            return curr != rhs.curr;
+        }
+    private:
+        bst::Node* curr;
+        bst* tree;
+};
 bst* create_small_bst();
 #endif
