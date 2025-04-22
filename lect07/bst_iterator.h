@@ -14,12 +14,16 @@ public:
     void printInorder() const;
     int getHeight() const; // returns the height of the tree
     vector<int> linearize() const; // NEW!
+    class iterator;
 
     // mutators or setter
     void insert(int value);
     void clear();
     void erase(int value);
     friend bst* create_small_bst();
+    iterator begin();
+    iterator end();
+
 
 private:
     struct Node{
@@ -39,5 +43,31 @@ private:
     Node* successor(Node* r) const;
     Node* getmin(Node* r) const;
 };
+class bst::iterator{
+ public:
+    iterator(bst::Node* p = nullptr, bst* ptree= nullptr): curr(p), tree(ptree){
+    }
+    // overload operators *, ++, != 
+    int operator*() {
+        return curr->data;
+    }
+    //preincrement
+    iterator& operator++(){
+        curr = tree->successor(curr);
+        return *this;
+    }
+
+    bool operator!=(iterator& rhs){
+        return curr != rhs.curr;
+    }
+
+ private:
+    bst::Node* curr;
+    bst* tree;
+};
+
+
 bst* create_small_bst();
+
+
 #endif

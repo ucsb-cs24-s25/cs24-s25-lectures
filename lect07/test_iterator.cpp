@@ -22,7 +22,7 @@ int main(){
     auto rnd_nums = generate_random_data(10);
     set<int> s(rnd_nums.begin(), rnd_nums.end());
 
-    // What you write (shorthand for loop):
+    // What you write (shorthand for-loop):
     for(int x : s){
         cout << x << " ";
     }
@@ -41,10 +41,10 @@ int main(){
      /
     12
     */
-    // bst* mybst = create_small_bst();
+    bst* mybst = create_small_bst();
     // mybst->printInorder();
     // cout << endl;
-
+    bst::iterator it;
     // bst::iterator it = mybst->begin();
     // while(it != mybst->end()){
     //     cout << *it << " ";
@@ -53,9 +53,9 @@ int main(){
     // cout << endl;
 
 
-    // for(auto e: *mybst){
-    //     cout << e << " ";
-    // }
-    // cout<< endl;
+    for(auto e: *mybst){
+        cout << e << " ";
+    }
+    cout<< endl;
     return 0;
 }

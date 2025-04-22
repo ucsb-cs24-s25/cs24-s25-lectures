@@ -3,6 +3,14 @@
 #include "bst_iterator.h"
 using namespace std;
 
+bst::iterator bst::begin(){
+    iterator it(getmin(root), this);
+    return it; 
+}
+
+bst::iterator bst::end(){
+    return iterator(nullptr, this);
+}
 
 bst::Node* bst::getmin(Node* r) const{
     if(!r) return nullptr;
