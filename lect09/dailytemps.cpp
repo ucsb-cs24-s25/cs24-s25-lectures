@@ -15,11 +15,12 @@ class Solution {
                     }
                 }
             } 
-            // Running time =  O(n^2)
+            // Running time =  O(n^2) 
             // More careful analyis:
             // T(n) = (n - 1 + n - 2 + n - 3 ...+ 3 + 2 + 1 ) * c
             //      = (n-1)* n / 2 = n^2/2 - n/2
-            // T(n) = O(n^2) (
+            // T(n) = O(n^2) 
+            // Auxilliary space complexity O(1) (not counting space for input and output)
             return result;     
         }
     
@@ -31,12 +32,13 @@ class Solution {
                 // Since the while loop and number of pops is variable per iteration,
                 // bound the total cost over all iterations  
                 while(!days.empty() && temperatures[i] >= temperatures[days.top()]){ 
-                    // while loop condition check is done as many times as the total number of pops + 
-                    // + one additional time per iteration. So overall 2n checks = O(n)
-                    days.pop(); // variable per iteration ; every value is pushed only once, so it can be poppped at most once
-                                // overall complexity for pop is O(n)
+                    // while loop condition check is done as many times as the total number of pops  
+                    // + one additional time per iteration. So overall at most 2n checks = O(n)
+                    days.pop(); // variable per iteration ; every value is pushed only once, 
+                                // so it can be poppped at most once
+                                // overall complexity for pop operation over all n iterations is O(n)
                 }
-                if(!days.empty()) result[i] = days.top() - i;
+                if(!days.empty()) result[i] = days.top() - i; // O(1) per iteration
     
                 days.push(i); // O(1) per iterartion
                 
@@ -45,6 +47,6 @@ class Solution {
     
         }
     //Overall running time: O(n)
-    //Auxilliary Space complexity:  O(n) 
+    //Auxilliary Space complexity: O(n) 
             
     };
