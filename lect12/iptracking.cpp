@@ -1,4 +1,4 @@
-#include "hashtable.h"
+#include "uhashtable.h"
 #include <iostream>
 #include <random>
 
@@ -25,8 +25,8 @@ int main() {
     std::mt19937 gen(rd());
 
     // Hash table setup
-    size_t m = 10;
-    size_t n = 10;
+    size_t m = 20;
+    size_t n = 20;
     HashTable ht(m);
    
 

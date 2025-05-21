@@ -25,18 +25,23 @@ private:
     }
 
 public:
-    HashTable(size_t table_size) {
-  
+    HashTable(size_t table_size):m(table_size), n(0) {
+        buckets.resize(m);
     }
 
     // Insert a key
     void insert(uint32_t key) {
- 
+        size_t index = hash(key);
+        buckets[index].push_back(key);
+        n++;
     }
 
     // Search for a key
     bool find(uint32_t key) const {
- 
+        size_t index = hash(key);
+        for(auto e : buckets[index]){
+            if (e == key) return true;
+        }
         return false;
     }
 
