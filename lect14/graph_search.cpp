@@ -21,7 +21,9 @@ class Graph{
             adjacencyList.resize(size);
         }
         void addEdge(int from, int to){
-            adjacencyList[from].insert(to);
+            adjacencyList[from].insert(to); // directed
+            adjacencyList[to].insert(from); // undirected case
+
         }
         void display(){
             for(int i = 0 ; i < adjacencyList.size(); i++){
@@ -33,9 +35,44 @@ class Graph{
             }
 
         }
+        void exploreBFS(int source){
+            vector<bool> visited(nodes.size(), false);
+            queue<int> q;
+            visited[source] = true;
+            cout << source << " ";
+            q.push(source);
+            while(!q.empty()){
+                int u = q.front();
+                q.pop();
+                for(auto v: adjacencyList[u]){
+                    if(!visited[v]){
+                        visited[v] = true;
+                        cout << v << " ";
+                        q.push(v);
+                    }
+                }
+            }
+            cout << endl;
+        }
+
+        void exploreDFS(int source){
+            vector<bool> visited(nodes.size(), false);
+            exploreDFS(source, visited);
+            cout << endl;
+        }
     private:
         vector<NodeInfo*> nodes;
         vector<unordered_set<int>> adjacencyList;
+        void exploreDFS(int source, vector<bool>& visited){
+            visited[source] = true;
+            cout << source << " ";
+            for (auto v: adjacencyList[source]){
+                if(!visited[v]){
+                    exploreDFS(v, visited);
+                }
+            }
+
+        }
 };
 /*
 Unweighted graph
@@ -70,7 +107,11 @@ int main(int argc, char const *argv[])
     g.addEdge(1, 5);
     g.addEdge(1, 4);
     g.addEdge(4, 5);
-
+    
     g.display();
+    cout << "Breadth First"<< endl;
+    g.exploreBFS(3);
+    cout << "Depth First"<< endl;
+    g.exploreDFS(0);
     return 0;
 }
